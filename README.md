@@ -9,6 +9,7 @@ This report documented how we analyzed over one million NY property data with th
 
 The goal of this project is to detect anomalies and potentail fraud events by analyzing over one million New York property data within year 2010 and 2011. The following are the outline of our analysis. For a detailed description of the project, please refer to [NY_FraudAnalysis_FinalReport.pdf](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/NY_FraudAnalysis_FinalReport.pdf).
 
+
 ## 1. Explored the data and generated a Data Quality Report that includes exploratoy analysis and detailed description of the dataset.
 
 1.1 Exploratoy data analysis: [1.Explore_data_Amy.ipynb](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/1.Explore_data_Amy.ipynb)
@@ -17,42 +18,59 @@ The goal of this project is to detect anomalies and potentail fraud events by an
 
 
 ## 2. Cleaned data and filled in missing values
+[2.DataCleaning_Amy.ipynb](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/2.DataCleaning_Amy.ipynb)
+
 We only used the following fields in the original dataset:
 *LTFRONT, LTDEPTH, BLDFRONT, BLDDEPTH, FULLVAL, AVLAND, AVTOT, STORIES, B, TAXCLASS, ZIP*
-
-
-notebook link:
 
 ## 3. Created 45 expert variables
 To detect abnormalities efficiently, we needed further information beyond the original dataset. So, we created 45 variables according to the following method.
 ### 3.1 Create 3 size variables
-Lot Area (lotarea) = LTFRONT * LTDEPTH
+- Lot Area (lotarea) = LTFRONT * LTDEPTH
+- Building Area (bldarea) = BLDFRONT * BLDDEPTH
+- Building Volume (bldvol) = bldarea * STORIES
 
-Building Area (bldarea) = BLDFRONT * BLDDEPTH
-
-Building Volume (bldvol) = bldarea * STORIES
 ### 3.2 Divide FULLVAL, AVLAND, and AVTOT by each size variables
 After dividing FULLVAL, AVLAND, and AVTOT by every size variables created in the previous stage, we have a total of 9 variables, noted as r1 to r9.
 ### 3.3 Divide r1 to r9 by 5 groups average
 After this stage, we will have 45 variables ready for the rest of our analysis.
 
 ## 4. Performed PCA to reduce dimensionality
-After performing PCA to 45 expert variables, we chose the top 6 principle components (accounted for over 90% of the variance) for the remaining analysis.
+After performing PCA to the 45 expert variables, I chose the top 8 principle components (accounted for over 95% of the variance) and standardized them for the remaining analysis.
 ![PCA](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/PCA.png)
 
-## 5. Calculated fraud scores using Heuristic Function and an Autoencoder
+## 5. Calculated fraud scores using Heuristic Function and an Autoencoder Model
 ###   5.1 Heuristic Function
+For each record, there are z-scores of PC1, PC2, ..., to PC8. The fruad score_1 for a record is defined as:
 
-###   5.2 Autoencoder
+$$score_1 = \sqrt{\sum_{i=1}^{8} PCi^{2}} $$
 
-It turned out that the top ten records between the two analysis methods are highly overlapped.
+I then created a rank column for score_1, named as rank_1.
 
-## 6. Ranked all records using the weighted average of Score_1 and Score_2
-Rank_final = Score_1*0.5 + Score_2*0.5
-The following table shows the top 10 anomalous records based on Rank_final.
+###   5.2 The Autoencoder Model
+I used Keras package in Python to train an autoencoder model. The structure of the auencoder is shown below, which consists of 3 layers. Both the input layer and output layer have 8 neurons, and the hidden layer has 4 neurons.
+![autoencoder](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/autoencoder.png)
 
-## 7. Investigation about these 10 records
-Through further investigation of these records, we concluded the following causes of abnormalities. 
+After fitting the trained autoencoder to the z-scores of PC1 to PC8, we got the reconstructed z-scores from the autoencoder model. Let's set the input z-scores as $X1$ to $X8$, and the reconstructed z-scores as $xNew1$ to $xNew8$. The fraud score_2 is defined as:
+
+$$score_2 = \sqrt{\sum_{i=1}^{8} (XNewi - Xi)^{2}}$$
+
+Similarly, I then created a rank column for score_2, named as rank_2.
+
+It turned out that the top ten records ranked by the two methods are highly overlapped.
+
+## 6. Ranked all records using the weighted average of rank_1 and rank_2
+$$Rank_final = rank_1 * 0.5 + rank_2 * 0.5$$
+The following tables shows the top 10 anomalous records based on Rank_final.
+
+**Table 1**
+![top10.1](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/top10_1.png)
+
+**Table 2**
+![top10.2](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/top10_2.png)
+
+## Conclusion
+Through further investigation of these 10 records, we concluded the following causes of abnormalities. 
 1.	Incorrect data inputs
 2.	Mortgage fraud 
 3.	Tax avoidance
