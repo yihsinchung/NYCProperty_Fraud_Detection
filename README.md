@@ -9,13 +9,14 @@ This report documented how we analyzed over one million NY property data with th
 
 The goal of this project is to detect anomalies and potentail fraud events by analyzing over one million New York property data within year 2010 and 2011. The following are the outline of what we did to accomplish the analysis. Please refer to the following link for a detailed report.
 
-## 1. Explored the data and generated a Data Quality Report which documented exploratoy analysis and detailed description of the dataset.
-[Data Quality Report](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/HW1_DataQualityReport_Amy.docx)
+## 1. Explored the data and generated a Data Quality Report that includes exploratoy analysis and detailed description of the dataset.
+1.1 Exploratoy data analysis: [1.Explore_data_Amy.ipynb](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/1.Explore_data_Amy.ipynb)
+1.2 [Data Quality Report](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/DataQualityReport_Amy.pdf)
 
 ## 2. Cleaned data and filled in missing values
-	  We only used the following fields in the dataset for our analysis:
+We only used the following fields in the dataset for our analysis:
 
-	  notebook link:
+notebook link:
 
 ## 3. Created 45 expert variables
 	  To detect abnormalities efficiently, we needed further information beyond the original dataset. So, we created 45 variables according to the following method.
