@@ -44,7 +44,7 @@ For each record, there are z-scores of PC1, PC2, ..., to PC8. The fruad score_1 
 ![score1](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/score_1.png)
 
 <p align="center">
-  <img width="200" height="160" src="https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/score_1.png">
+  <img width="200" height="100" src="https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/score_1.png">
 </p>
 
 I then created a rank column for score_1, named as rank_1.
@@ -61,7 +61,7 @@ After fitting the trained autoencoder to the z-scores of PC1 to PC8, we got the 
 ![score2](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/score_2.png)
 
 <p align="center">
-  <img width="220" height="160" src="https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/score_2.png">
+  <img width="220" height="100" src="https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/score_2.png">
 </p>
 
 Similarly, I then created a rank column for score_2, named as rank_2.
@@ -73,7 +73,7 @@ It turned out that the top ten records ranked by the two methods are highly over
 ![FianlRank](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/rankfinal.png)
 
 <p align="center">
-  <img width="300" height="160" src="https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/rankfinal.png">
+  <img width="300" height="100" src="https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/rankfinal.png">
 </p>
 
 The following tables shows the top 10 anomalous records based on Rank_final.
