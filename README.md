@@ -37,6 +37,7 @@ After this stage, we will have 45 variables ready for the rest of our analysis.
 
 ## 4. Performed PCA to reduce dimensionality
 After performing PCA to the 45 expert variables, I chose the top 8 principle components (accounted for over 95% of the variance) and standardized them for the remaining analysis.
+
 ![PCA](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/PCA.png)
 
 ## 5. Calculated fraud scores using Heuristic Function and an Autoencoder Model
@@ -49,6 +50,7 @@ I then created a rank column for score_1, named as rank_1.
 
 ###   5.2 The Autoencoder Model
 I used Keras package in Python to train an autoencoder model. The structure of the auencoder is shown below, which consists of 3 layers. Both the input layer and output layer have 8 neurons, and the hidden layer has 4 neurons.
+
 ![autoencoder](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/autoencoder.png)
 
 After fitting the trained autoencoder to the z-scores of PC1 to PC8, we got the reconstructed z-scores from the autoencoder model. Let's set the input z-scores as X1 to X8, and the reconstructed z-scores as xNew1 to xNew8. The fraud score_2 is defined as:
@@ -60,14 +62,22 @@ Similarly, I then created a rank column for score_2, named as rank_2.
 It turned out that the top ten records ranked by the two methods are highly overlapped.
 
 ## 6. Ranked all records using the weighted average of rank_1 and rank_2
+
 ![FianlRank](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/rankfinal.png)
+
 The following tables shows the top 10 anomalous records based on Rank_final.
 
 **Table 1**
+
 ![top10.1](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/top10_1.png)
 
 **Table 2**
+
 ![top10.2](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/top10_2.png)
+
+<p align="center">
+  <img width="460" height="300" src="https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/top10_2.png">
+</p>
 
 ## Conclusion
 Through further investigation of these 10 records, we concluded the following causes of abnormalities. 
