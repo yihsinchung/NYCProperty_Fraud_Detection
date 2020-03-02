@@ -69,14 +69,14 @@ The following tables shows the top 10 anomalous records based on Rank_final.
 
 **Table 1**
 
-![top10.1](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/top10_1.png)
+<p align="center">
+  <img width="600" height="400" src="https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/top10_1.png">
+</p>
 
 **Table 2**
 
-![top10.2](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/top10_2.png)
-
 <p align="center">
-  <img width="500" height="400" src="https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/top10_2.png">
+  <img width="600" height="400" src="https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/top10_2.png">
 </p>
 
 ## Conclusion
