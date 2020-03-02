@@ -85,7 +85,7 @@ According to FinalRank, the following tables show the top 10 anomalous records w
 </p>
 
 ## Conclusion
-Through further investigation of these 10 records, we concluded the following causes of abnormalities. 
+Through further investigation of these 10 records, I concluded the following causes of abnormalities. 
 1.	Incorrect data inputs
 2.	Mortgage fraud 
 3.	Tax avoidance
