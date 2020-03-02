@@ -1,22 +1,22 @@
 # NYC Property Fraud Detection
 
-The goal of this project is to detect anomalies and potentail fraud events by analyzing over one million New York property data within year 2010 and 2011. The following are the outline of our analysis. For a detailed description of the project, please refer to [NY_FraudAnalysis_FinalReport.pdf](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/NY_FraudAnalysis_FinalReport.pdf).
+The goal of this project is to detect anomalies and potentail fraud events by analyzing over one million New York property data within year 2010 and 2011. The following are the outline of our analysis. For a detailed description of the project, please refer to [NY_FraudAnalysis_Report.pdf](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/NY_FraudAnalysis_FinalReport.pdf).
 
 
-## 1. Explored the data and generated a Data Quality Report that includes exploratoy analysis and detailed description of the dataset.
+## 1. Exploratory Data Analysis and Data Quality Report
 
-1.1 Exploratoy data analysis: [1.Explore_data_Amy.ipynb](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/1.Explore_data_Amy.ipynb)
+1.1 Exploratory data analysis: [1.Explore_data_Amy.ipynb](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/1.Explore_data_Amy.ipynb)
 
-1.2 [Data Quality Report](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/DataQualityReport_Amy.pdf)
+1.2 [Data Quality Report](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/DataQualityReport_Amy.pdf): includes exploratory analysis and detailed description of each field.
 
 
-## 2. Cleaned data and filled in missing values
+## 2. Data Cleaning - Fill Missing Values
 [2.DataCleaning_Amy.ipynb](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/2.DataCleaning_Amy.ipynb)
 
 We only used the following fields in the original dataset:
 *LTFRONT, LTDEPTH, BLDFRONT, BLDDEPTH, FULLVAL, AVLAND, AVTOT, STORIES, B, TAXCLASS, ZIP*
 
-## 3. Created 45 expert variables
+## 3. Created 45 Expert Variables
 To detect abnormalities efficiently, we needed further information beyond the original dataset. So, we created 45 variables according to the following method.
 #### 3.1 Create 3 size variables
 - Lot Area (lotarea) = LTFRONT * LTDEPTH
@@ -28,7 +28,7 @@ After dividing FULLVAL, AVLAND, and AVTOT by every size variables created in the
 #### 3.3 Divide r1 to r9 by 5 groups average
 After this stage, we will have 45 variables ready for the rest of our analysis.
 
-## 4. Performed PCA to reduce dimensionality
+## 4. Performed PCA to Reduce Dimensionality
 [3.PCA&Autoencoder_Amy.ipynb](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/3.PCA%26Autoencoder_Amy.ipynb)
 
 After performing PCA to the 45 expert variables, I chose the top 8 principle components (accounted for over 95% of the variance) and standardized them for the remaining analysis.
@@ -37,7 +37,7 @@ After performing PCA to the 45 expert variables, I chose the top 8 principle com
   <img width="600" height="450" src="https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/PCA.png">
 </p>
 
-## 5. Calculated fraud scores using Heuristic Function and an Autoencoder Model
+## 5. Calculated 2 fraud scores using Heuristic Function and an Autoencoder Model
 #### 5.1 Heuristic Function
 For each record, there are z-scores of PC1, PC2, ..., to PC8. The fruad score_1 for a record is defined as:
 
@@ -89,14 +89,5 @@ Through further investigation of these 10 records, we concluded the following ca
 1.	Incorrect data inputs
 2.	Mortgage fraud 
 3.	Tax avoidance
-
-
-
-
-
-
-
-
-
 
 
