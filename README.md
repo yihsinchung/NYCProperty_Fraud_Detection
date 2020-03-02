@@ -41,8 +41,6 @@ After performing PCA to the 45 expert variables, I chose the top 8 principle com
 ###   5.1 Heuristic Function
 For each record, there are z-scores of PC1, PC2, ..., to PC8. The fruad score_1 for a record is defined as:
 
-![score1](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/score_1.png)
-
 <p align="center">
   <img width="212" height="92" src="https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/score_1.png">
 </p>
@@ -58,8 +56,6 @@ I used Keras package in Python to train an autoencoder model. The structure of t
 
 After fitting the trained autoencoder to the z-scores of PC1 to PC8, we got the reconstructed z-scores from the output of the autoencoder model. Let's set the input z-scores as X1 to X8, and the reconstructed z-scores as xNew1 to xNew8. The fraud score_2 is defined as:
 
-![score2](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/score_2.png)
-
 <p align="center">
   <img width="295" height="92" src="https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/score_2.png">
 </p>
@@ -70,13 +66,11 @@ It turned out that the top ten records ranked by the two methods are highly over
 
 ## 6. Ranked all records using the weighted average of rank_1 and rank_2
 
-![FianlRank](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/rankfinal.png)
-
 <p align="center">
   <img width="319" height="32" src="https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/rankfinal.png">
 </p>
 
-The following tables shows the top 10 anomalous records based on Rank_final.
+According to FinalRank, the following tables show the top 10 anomalous records with 11 original variables in the NY property dataset.
 
 **Table 1**
 
