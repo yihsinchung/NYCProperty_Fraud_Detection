@@ -1,6 +1,6 @@
 # NYC Property Fraud Detection
 
-The goal of this project is to detect anomalies and potentail fraud events by analyzing over one million New York property data within year 2010 and 2011. The following are the outline of our analysis. For a detailed description of the project, please refer to [NY_FraudAnalysis_Report.pdf](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/NY_FraudAnalysis_FinalReport.pdf).
+The goal of this project is to detect anomalies and potentail fraud events by analyzing over one million New York property data within year 2010 and 2011. The following are the outline of the analysis. For a detailed description of the project, please refer to [NY_FraudAnalysis_Report.pdf](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/NY_FraudAnalysis_FinalReport.pdf).
 
 
 ## 1. Exploratory Data Analysis and Data Quality Report
@@ -26,9 +26,9 @@ To detect abnormalities efficiently, we needed further information beyond the or
 #### 3.2 Divide FULLVAL, AVLAND, and AVTOT by each size variables
 After dividing FULLVAL, AVLAND, and AVTOT by every size variables created in the previous stage, we have a total of 9 variables, noted as r1 to r9.
 #### 3.3 Divide r1 to r9 by 5 groups average
-After this stage, we will have 45 variables ready for the rest of our analysis.
+After this stage, we will have 45 variables ready for the rest of the analysis.
 
-## 4. Performed PCA to Reduce Dimensionality
+## 4. Performed Principle Component Analysis to Reduce Dimensionality
 [3.PCA&Autoencoder_Amy.ipynb](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/3.PCA%26Autoencoder_Amy.ipynb)
 
 After performing PCA to the 45 expert variables, I chose the top 8 principle components (accounted for over 95% of the variance) and standardized them for the remaining analysis.
@@ -54,7 +54,7 @@ I used Keras package in Python to train an autoencoder model. The structure of t
   <img width="600" height="400" src="https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/autoencoder.png">
 </p>
 
-After fitting the trained autoencoder to the z-scores of PC1 to PC8, we got the reconstructed z-scores from the output of the autoencoder model. Let's set the input z-scores as X1 to X8, and the reconstructed z-scores as xNew1 to xNew8. The fraud score_2 is defined as:
+After fitting the trained autoencoder to the z-scores of PC1 to PC8, we got the reconstructed z-scores from the output of the autoencoder model. Set the input z-scores as X1 to X8, and the reconstructed z-scores as xNew1 to xNew8. For each record, the fraud score_2 is defined as:
 
 <p align="center">
   <img width="295" height="92" src="https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/score_2.png">
