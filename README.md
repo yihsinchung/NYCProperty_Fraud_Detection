@@ -19,13 +19,17 @@ The goal of this project is to detect anomalies and potentail fraud events by an
 ## 2. Cleaned data and filled in missing values
 We only used the following fields in the original dataset:
 *LTFRONT, LTDEPTH, BLDFRONT, BLDDEPTH, FULLVAL, AVLAND, AVTOT, STORIES, B, TAXCLASS, ZIP*
+
+
 notebook link:
 
 ## 3. Created 45 expert variables
 To detect abnormalities efficiently, we needed further information beyond the original dataset. So, we created 45 variables according to the following method.
 ### 3.1 Create 3 size variables
 Lot Area (lotarea) = LTFRONT * LTDEPTH
+
 Building Area (bldarea) = BLDFRONT * BLDDEPTH
+
 Building Volume (bldvol) = bldarea * STORIES
 ### 3.2 Divide FULLVAL, AVLAND, and AVTOT by each size variables
 After dividing FULLVAL, AVLAND, and AVTOT by every size variables created in the previous stage, we have a total of 9 variables, noted as r1 to r9.
@@ -33,24 +37,25 @@ After dividing FULLVAL, AVLAND, and AVTOT by every size variables created in the
 After this stage, we will have 45 variables ready for the rest of our analysis.
 
 ## 4. Performed PCA to reduce dimensionality
-	  After performing PCA to 45 expert variables, we chose the top 6 principle components (accounted for over 90% of the variance) for the remaining analysis.
+After performing PCA to 45 expert variables, we chose the top 6 principle components (accounted for over 90% of the variance) for the remaining analysis.
+![PCA](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/PCA.png)
 
 ## 5. Calculated fraud scores using Heuristic Function and an Autoencoder
 ###   5.1 Heuristic Function
 
 ###   5.2 Autoencoder
 
-	  It turned out that the top ten records between the two analysis methods are highly overlapped.
+It turned out that the top ten records between the two analysis methods are highly overlapped.
 
 ## 6. Ranked all records using the weighted average of Score_1 and Score_2
-	  Rank_final = Score_1*0.5 + Score_2*0.5
-	  The following table shows the top 10 anomalous records based on Rank_final.
+Rank_final = Score_1*0.5 + Score_2*0.5
+The following table shows the top 10 anomalous records based on Rank_final.
 
 ## 7. Investigation about these 10 records
-      Through further investigation of these records, we concluded the following causes of abnormalities. 
-      1.	Incorrect data inputs
-      2.	Mortgage fraud 
-      3.	Tax avoidance
+Through further investigation of these records, we concluded the following causes of abnormalities. 
+1.	Incorrect data inputs
+2.	Mortgage fraud 
+3.	Tax avoidance
 
 
 
