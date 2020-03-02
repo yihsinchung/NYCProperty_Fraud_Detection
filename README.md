@@ -18,14 +18,14 @@ We only used the following fields in the original dataset:
 
 ## 3. Created 45 expert variables
 To detect abnormalities efficiently, we needed further information beyond the original dataset. So, we created 45 variables according to the following method.
-### 3.1 Create 3 size variables
+##### 3.1 Create 3 size variables
 - Lot Area (lotarea) = LTFRONT * LTDEPTH
 - Building Area (bldarea) = BLDFRONT * BLDDEPTH
 - Building Volume (bldvol) = bldarea * STORIES
 
-### 3.2 Divide FULLVAL, AVLAND, and AVTOT by each size variables
+##### 3.2 Divide FULLVAL, AVLAND, and AVTOT by each size variables
 After dividing FULLVAL, AVLAND, and AVTOT by every size variables created in the previous stage, we have a total of 9 variables, noted as r1 to r9.
-### 3.3 Divide r1 to r9 by 5 groups average
+##### 3.3 Divide r1 to r9 by 5 groups average
 After this stage, we will have 45 variables ready for the rest of our analysis.
 
 ## 4. Performed PCA to reduce dimensionality
@@ -38,7 +38,7 @@ After performing PCA to the 45 expert variables, I chose the top 8 principle com
 </p>
 
 ## 5. Calculated fraud scores using Heuristic Function and an Autoencoder Model
-###   5.1 Heuristic Function
+#####   5.1 Heuristic Function
 For each record, there are z-scores of PC1, PC2, ..., to PC8. The fruad score_1 for a record is defined as:
 
 <p align="center">
@@ -47,7 +47,7 @@ For each record, there are z-scores of PC1, PC2, ..., to PC8. The fruad score_1 
 
 I then created a rank column for score_1, named as rank_1.
 
-###   5.2 The Autoencoder Model
+#####   5.2 The Autoencoder Model
 I used Keras package in Python to train an autoencoder model. The structure of the auencoder is shown below, which consists of 3 layers. Both the input layer and output layer have 8 neurons, and the hidden layer has 4 neurons.
 
 <p align="center">
