@@ -1,5 +1,7 @@
 # NYC Property Fraud Detection
 
+**Tools: Python (Keras/scikit-learn/pandas/numpy/matplotlib)**
+
 The goal of this project is to detect anomalies and potentail fraud events by analyzing over one million New York property data within year 2010 and 2011. The following are the outline of the analysis. For a detailed description of the project, please refer to [NY_FraudAnalysis_Report.pdf](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/NY_FraudAnalysis_FinalReport.pdf).
 
 
