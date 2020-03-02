@@ -43,7 +43,7 @@ After performing PCA to the 45 expert variables, I chose the top 8 principle com
 ###   5.1 Heuristic Function
 For each record, there are z-scores of PC1, PC2, ..., to PC8. The fruad score_1 for a record is defined as:
 
-$$score_1 = \sqrt{\sum_{i=1}^{8} PCi^{2}} $$
+![score1](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/score_1.png)
 
 I then created a rank column for score_1, named as rank_1.
 
@@ -51,16 +51,16 @@ I then created a rank column for score_1, named as rank_1.
 I used Keras package in Python to train an autoencoder model. The structure of the auencoder is shown below, which consists of 3 layers. Both the input layer and output layer have 8 neurons, and the hidden layer has 4 neurons.
 ![autoencoder](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/autoencoder.png)
 
-After fitting the trained autoencoder to the z-scores of PC1 to PC8, we got the reconstructed z-scores from the autoencoder model. Let's set the input z-scores as $X1$ to $X8$, and the reconstructed z-scores as $xNew1$ to $xNew8$. The fraud score_2 is defined as:
+After fitting the trained autoencoder to the z-scores of PC1 to PC8, we got the reconstructed z-scores from the autoencoder model. Let's set the input z-scores as X1 to X8, and the reconstructed z-scores as xNew1 to xNew8. The fraud score_2 is defined as:
 
-$$score_2 = \sqrt{\sum_{i=1}^{8} (XNewi - Xi)^{2}}$$
+![score2](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/score_2.png)
 
 Similarly, I then created a rank column for score_2, named as rank_2.
 
 It turned out that the top ten records ranked by the two methods are highly overlapped.
 
 ## 6. Ranked all records using the weighted average of rank_1 and rank_2
-$$Rank_final = rank_1 * 0.5 + rank_2 * 0.5$$
+![FianlRank](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/Graphs/rankfinal.png)
 The following tables shows the top 10 anomalous records based on Rank_final.
 
 **Table 1**
