@@ -1,5 +1,6 @@
 # NYC Property Fraud Detection
 
+**Principle Component Analysis & Autoencoder | Fraud Analytics project at USC**
 **Tools: Python (Keras/scikit-learn/pandas/numpy/matplotlib)**
 
 The goal of this project is to detect anomalies and potentail fraud events by analyzing over one million New York property data within year 2010 and 2011. The following are the outline of the analysis. For a detailed description of the project, please refer to [NY_FraudAnalysis_Report.pdf](https://github.com/wanwanjong/NYCProperty_Fraud_Detection/blob/master/NY_FraudAnalysis_FinalReport.pdf).
@@ -49,7 +50,7 @@ For each record, there are z-scores of PC1, PC2, ..., to PC8. The fruad score_1 
 
 I then created a rank column for score_1, named as rank_1.
 
-#### 5.2 The Autoencoder Model
+#### 5.2 The Autoencoder
 I used Keras package in Python to train an autoencoder model. The structure of the auencoder is shown below, which consists of 3 layers. Both the input layer and output layer have 8 neurons, and the hidden layer has 4 neurons.
 
 <p align="center">
